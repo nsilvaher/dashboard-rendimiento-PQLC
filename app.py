@@ -125,7 +125,7 @@ Se mantiene el enfoque del feedback de R&D: separación clara entre **causa (con
 # ===================== PROCESAMIENTO =====================
 @st.cache_data(show_spinner="Procesando datos...")
 def procesar(file_bytes, meta_val):
-    df = pd.read_excel(file_bytes, sheet_name="Hoja2")
+    df = pd.read_excel(io.BytesIO(file_bytes), sheet_name="Hoja2")
 
     # Fecha legible
     df["Fecha_dt"] = pd.to_datetime("1899-12-30") + pd.to_timedelta(df["Fecha"], unit="D")
